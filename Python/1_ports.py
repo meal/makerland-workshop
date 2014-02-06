@@ -20,8 +20,6 @@ def list_serial_ports():
         # Mac / Linux
         return [port[0] for port in list_ports.comports()]
 
-
-
 def main():
     print
     print 'Available ports:'
@@ -29,6 +27,6 @@ def main():
     for available_port in list_serial_ports():
         print "\t", available_port
     print
-    
+
 if __name__ == '__main__':
     main()
