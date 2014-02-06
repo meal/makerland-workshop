@@ -3,8 +3,7 @@
 require 'serialport'
 
 def blink(port)
-  ser = SerialPort.new("#{port}", 9600, 8, 1, SerialPort::NONE)
-
+  ser = SerialPort.new("#{port}", 9600, 8, 1)
   led_on = false
 
   loop do
@@ -20,7 +19,8 @@ def blink(port)
     else
       state = "Off"
     end
-    puts "LED is #{state} \r"
+    puts "LED is #{state}\r"
+    STDOUT.flush
     sleep(1)
   end
 end
@@ -30,7 +30,7 @@ if __FILE__ == $0
   if ARGV.empty?
     puts "usage: ruby #{__FILE__} <serial>"
   else
-    blink(ARGV)
+    blink(ARGV[0])
   end
 end
 
