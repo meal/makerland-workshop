@@ -21,6 +21,7 @@ def blink(port)
       state = "Off"
     end
     puts "LED is #{state} \r"
+    sleep(1)
   end
 end
 
