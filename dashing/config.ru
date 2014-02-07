@@ -1,7 +1,7 @@
 require 'dashing'
 
 configure do
-  set :auth_token, 'YOUR_AUTH_TOKEN'
+  set :auth_token, 'a8f77ce1a8d6a40403a31564f2233bcd'
 
   helpers do
     def protected!
