@@ -19,7 +19,7 @@ def blink(port)
     else
       state = "Off"
     end
-    puts "LED is #{state}\r"
+    print "LED is #{state}\r"
     STDOUT.flush
     sleep(1)
   end

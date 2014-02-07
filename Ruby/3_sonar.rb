@@ -8,7 +8,7 @@ def check_distance(port)
   loop do
     ser.write "S"
     distance = ser.readline().strip
-    puts "Distance is #{distance} cm \r"
+    print "Distance is #{distance} cm \r"
     STDOUT.flush
     sleep(1)
   end

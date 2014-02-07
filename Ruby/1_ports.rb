@@ -14,11 +14,11 @@ def list_serial_ports
       end
     end
     availables.each do |available|
-      puts "\t #{available}"
+      print "\t #{available}"
     end
   else
     Dir.glob("/dev/tty.*") do |port|
-      puts "\t #{port}"
+      print "\t #{port}"
     end
   end
 end
