@@ -3,7 +3,6 @@ import time
 import sys
 import json
 from serial import Serial
-import pyaudio
 import requests
 
 
