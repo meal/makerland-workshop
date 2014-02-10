@@ -11,7 +11,7 @@ NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); // NewPing setup of pins and
 // SDA -> #2
 // SCL -> #3
 #include <Wire.h>
-#include <BH1750.h>
+#include "BH1750.h"
 BH1750 lightMeter;
 
 // PIR HC-SR501
@@ -21,8 +21,8 @@ boolean isCalibrated = false;
 int pirPin = 5;
 
 // DHT11 temperature/humidity sensor
+#include "Dht11.h"
 int DHT_DATA_PIN = 7; // The data I/O pin connected to the DHT11 sensor
-#include <Dht11.h>
 static Dht11 sensor(DHT_DATA_PIN);
 
 // Diode setup
