@@ -129,7 +129,7 @@ void readMotion() {
   }
   // Read PIR value and print it on serial
   // TIP: PIR has a very long lag to go from 1 to 0 (around 3 seconds)
-  Serial.println(digitalRead(pirPin) ? "1" : "0");
+  Serial.println(digitalRead(PIR_PIN) ? "1" : "0");
 }
 
 
@@ -144,7 +144,7 @@ void setDiode() {
   // Get the character containing LED state ("0" or "1")
   char stateCharacter = Serial.read();
   // Set state to 1 if character is "1" and to 0 if otherwise
-  boolean state = stateCharacter == '1'
+  boolean state = stateCharacter == '1';
   // Set te LED state
   digitalWrite(LED_PIN, state);
 }
