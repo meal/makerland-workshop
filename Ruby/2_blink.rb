@@ -3,15 +3,15 @@
 require 'serialport'
 
 def blink(port)
-  ser = SerialPort.new("#{port}", 9600, 8, 1)
+  serial = SerialPort.new("#{port}", 9600, 8, 1)
   led_on = false
 
   loop do
     led_on = !led_on
     if led_on
-      ser.write "D1"
+      serial.write "D1"
     else
-      ser.write "D0"
+      serial.write "D0"
     end
 
     if led_on

@@ -5,7 +5,7 @@ def list_serial_ports
     availables = []
     (1..256).each do |p|
       begin
-        ser = SerialPort.new(p)
+        serial = SerialPort.new(p)
         availables << "COM#{p}"
       rescue Errno::ENOENT => e
         File.open("ports.log", 'wb') do |f|

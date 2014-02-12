@@ -3,11 +3,11 @@
 require 'serialport'
 
 def check_distance(port)
-  ser = SerialPort.new("#{port}", 9600, 8, 1)
+  serial = SerialPort.new("#{port}", 9600, 8, 1)
 
   loop do
-    ser.write "S"
-    distance = ser.readline().strip
+    serial.write "S"
+    distance = serial.readline.strip
     print "Distance is #{distance} cm \r"
     STDOUT.flush
     sleep(1)

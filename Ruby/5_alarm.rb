@@ -4,17 +4,17 @@ require 'serialport'
 
 def alarm(port)
 
-  ser = SerialPort.new("#{port}", 9600, 8, 1)
+  serial = SerialPort.new("#{port}", 9600, 8, 1)
 
   puts "Calibration started..."
-  ser.write('M')
-  ser.readline()
+  serial.write('M')
+  serial.readline()
   puts "Calibration finished..."
   puts ""
 
   loop do
-    ser.write('M')
-    motion = (ser.readline().strip).to_i
+    serial.write('M')
+    motion = (serial.readline.strip).to_i
 
     if motion == 1
       state = "\033[91m DANGER! DANGER!\033[0m"

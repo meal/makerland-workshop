@@ -3,18 +3,18 @@
 require 'serialport'
 
 def meteo(port)
-  ser = SerialPort.new("#{port}", 9600, 8, 1)
+  serial = SerialPort.new("#{port}", 9600, 8, 1)
 
   loop do
-    ser.write('T')
-    temperature = ser.readline().strip
+    serial.write('T')
+    temperature = serial.readline.strip
 
     sleep(0.5)
-    ser.write('H')
-    humidity = ser.readline().strip
+    serial.write('H')
+    humidity = serial.readline.strip
 
-    ser.write('L')
-    light = ser.readline().strip
+    serial.write('L')
+    light = serial.readline.strip
 
     print "Temperature: #{temperature}*C\tHumidity: #{humidity}%\t\tLight: #{light}\r"
     STDOUT.flush
