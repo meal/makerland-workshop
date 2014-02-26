@@ -13,7 +13,7 @@ def meteo(port)
     serial.write('H')
     humidity = serial.readline.strip
 
-    serial.write('L')
+    serial.write('A')
     light = serial.readline.strip
 
     print "Temperature: #{temperature}*C\tHumidity: #{humidity}%\t\tLight: #{light}\r"
