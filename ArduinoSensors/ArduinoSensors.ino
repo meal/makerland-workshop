@@ -47,6 +47,15 @@ static Dht11 sensor(DHT_DATA_PIN);
 
 
 /****************************
+ * VCNL proximity/light sensor      *
+ ****************************/
+// Include VCNL4000 library.
+#include "vcnl4000.h"
+// Setup library.
+VCNL4000 proximitySensor;
+
+
+/****************************
  * Onboard LED              *
  ****************************/
 // Arduino pin connected to the soldered LED.
@@ -78,6 +87,9 @@ void setup() {
   
   // Set LED pin as a output one
   pinMode(LED_PIN, OUTPUT);
+  
+  // Initialize VCNL4000 proximity/light sensor
+  proximitySensor.begin();
 }
 
 
@@ -225,6 +237,32 @@ void readHumidity() {
 
 
 /***********************************************************
+ * Ambient light function.                                 *
+ *                                                         *
+ * Reads ambient light value and prints it to serial       *
+ ***********************************************************/
+void readAmbientLight() {
+  // Get the value...
+  uint16_t ambientLight = proximitySensor.readAmbientData();
+  // ...and print it on serial
+  Serial.println(ambientLight);
+}
+
+
+/***********************************************************
+ * Proximity function.                                     *
+ *                                                         *
+ * Reads proximity and prints it to serial                 *
+ ***********************************************************/
+void readProximity() {
+  // Get the value...
+  uint16_t proximity = proximitySensor.readProximityData();
+  // ...and print it on serial
+  Serial.println(proximity);
+}
+
+
+/***********************************************************
  * Loop function.                                          *
  *                                                         *
  * This is called indefinitely after setup function.       *
@@ -266,6 +304,18 @@ void loop() {
         case 'H':
           readHumidity();
           break;            
+        
+        // Lower or upper "A" for humidity
+        case 'a':
+        case 'A':
+          readAmbientLight();
+          break; 
+          
+        // Lower or upper "P" for humidity
+        case 'p':
+        case 'P':
+          readProximity();
+          break; 
         
         // Lower or upper "D" for LED diode
         case 'd':
