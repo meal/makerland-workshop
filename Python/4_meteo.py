@@ -19,10 +19,10 @@ def main():
         serial.write("H")
         humidity = serial.readline().strip()
 
-        serial.write("L")
+        serial.write("A")
         light = serial.readline().strip()
 
-        sys.stdout.write("Temperature: %s°C\tHumidity: %s%%\t\tLight: %slx%s\r" %
+        sys.stdout.write("Temperature: %s°C\tHumidity: %s%%\t\tLight: %s%s\r" %
                          (temperature, humidity, light, ' ' * 40))
         sys.stdout.flush()
         time.sleep(1)

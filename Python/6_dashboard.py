@@ -43,7 +43,7 @@ def main():
         payload.update({'current': distance})
         requests.post(dashboard + 'sonar', data=json.dumps(payload))
 
-        serial.write("L")
+        serial.write("A")
         light = serial.readline().strip()
         for point in points:
             last_x = max(last_x, point['x'])
