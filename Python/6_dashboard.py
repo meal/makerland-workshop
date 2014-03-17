@@ -8,15 +8,15 @@ import requests
 
 def main():
     if len(sys.argv) != 3:
-    	print "usage: python %s <serial> <dashboard>" % __file__
+        print "usage: python %s <serial> <dashboard>" % __file__
         sys.exit(3)
 
     serial = Serial(sys.argv[1], timeout=5)
     dashboard = 'http://makerland-dashboard.herokuapp.com/widgets/%s-' % sys.argv[2]
     token = 'a8f77ce1a8d6a40403a31564f2233bcd'
     payload = {
-		'auth_token': token
-	}
+        'auth_token': token
+    }
     points = []
     last_x = 1
 
