@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+#
+# This code needs PyAudio. Install it by typing: `pip install PyAudio`
+#
 import time
 import sys
 import math
