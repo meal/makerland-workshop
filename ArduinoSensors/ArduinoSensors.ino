@@ -2,7 +2,7 @@
  * HC-SR04 sonar            *
  ****************************/
 // Include sonar library.
-#include <NewPing.h>
+#include "NewPing.h"
 // Arduino pin connected to trigger pin on the ultrasonic sensor.
 #define TRIGGER_PIN  12
 // Arduino pin connected to echo pin on the ultrasonic sensor.
