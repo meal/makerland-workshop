@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+#
+# This code needs PyAudio. Install it by typing: `pip install PyAudio`
+#
 import time
 import sys
 import math
@@ -41,7 +44,7 @@ def main():
     	print "usage: python %s <serial>" % __file__
         sys.exit(2)
 
-    serial = Serial(sys.argv[1])
+    serial = Serial(sys.argv[1], timeout=5)
     audio = pyaudio.PyAudio()
     stream = audio.open(format=pyaudio.paInt8,
                         channels=1,

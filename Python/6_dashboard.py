@@ -11,7 +11,7 @@ def main():
     	print "usage: python %s <serial> <dashboard>" % __file__
         sys.exit(3)
 
-    serial = Serial(sys.argv[1])
+    serial = Serial(sys.argv[1], timeout=5)
     dashboard = 'http://makerland-dashboard.herokuapp.com/widgets/%s-' % sys.argv[2]
     token = 'a8f77ce1a8d6a40403a31564f2233bcd'
     payload = {
@@ -43,7 +43,7 @@ def main():
         payload.update({'current': distance})
         requests.post(dashboard + 'sonar', data=json.dumps(payload))
 
-        serial.write("L")
+        serial.write("A")
         light = serial.readline().strip()
         for point in points:
             last_x = max(last_x, point['x'])
