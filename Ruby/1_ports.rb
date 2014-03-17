@@ -6,6 +6,7 @@ def list_serial_ports
     (1..256).each do |p|
       begin
         serial = SerialPort.new(p)
+        serial.read_timeout = 5000
         availables << "COM#{p}"
       rescue Errno::ENOENT => e
         File.open("ports.log", 'wb') do |f|
@@ -14,11 +15,11 @@ def list_serial_ports
       end
     end
     availables.each do |available|
-      print "\t #{available}"
+      puts "\t #{available}"
     end
   else
     Dir.glob("/dev/tty.*") do |port|
-      print "\t #{port}"
+      puts "\t #{port}"
     end
   end
 end

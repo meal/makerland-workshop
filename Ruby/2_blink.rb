@@ -4,6 +4,7 @@ require 'serialport'
 
 def blink(port)
   serial = SerialPort.new("#{port}", 9600, 8, 1)
+  serial.read_timeout = 5000
   led_on = false
 
   loop do

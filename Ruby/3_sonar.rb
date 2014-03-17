@@ -4,6 +4,7 @@ require 'serialport'
 
 def check_distance(port)
   serial = SerialPort.new("#{port}", 9600, 8, 1)
+  serial.read_timeout = 5000
 
   loop do
     serial.write "S"
