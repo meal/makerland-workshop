@@ -41,7 +41,7 @@ def callback(in_data, frame_count, time_info, status):
 def main():
     global frequency
     if len(sys.argv) != 2:
-    	print "usage: python %s <serial>" % __file__
+        print "usage: python %s <serial>" % __file__
         sys.exit(2)
 
     serial = Serial(sys.argv[1], timeout=5)
