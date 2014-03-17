@@ -11,7 +11,7 @@ def main():
     	print "usage: python %s <serial> <dashboard>" % __file__
         sys.exit(3)
 
-    serial = Serial(sys.argv[1])
+    serial = Serial(sys.argv[1], timeout=5)
     dashboard = 'http://makerland-dashboard.herokuapp.com/widgets/%s-' % sys.argv[2]
     token = 'a8f77ce1a8d6a40403a31564f2233bcd'
     payload = {

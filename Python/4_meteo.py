@@ -8,7 +8,7 @@ def main():
     	print "usage: python %s <serial>" % __file__
         sys.exit(2)
 
-    serial = Serial(sys.argv[1])
+    serial = Serial(sys.argv[1], timeout=5)
 
     while True:
         serial.write("T")

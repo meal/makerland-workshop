@@ -9,7 +9,7 @@ def main():
     	print "usage: python %s <serial>" % __file__
         sys.exit(2)
 
-    serial = Serial(sys.argv[1])
+    serial = Serial(sys.argv[1], timeout=5)
 
     # After we send this, we have to wait 15 seconds for sensor to calibrate
     print "Calibration started..."
