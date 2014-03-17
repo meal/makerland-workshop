@@ -53,6 +53,7 @@ static Dht11 sensor(DHT_DATA_PIN);
 #include "vcnl4000.h"
 // Setup library.
 VCNL4000 proximitySensor;
+bool wasInitialized = false;
 
 
 /****************************
@@ -87,9 +88,6 @@ void setup() {
   
   // Set LED pin as a output one
   pinMode(LED_PIN, OUTPUT);
-  
-  // Initialize VCNL4000 proximity/light sensor
-  proximitySensor.begin();
 }
 
 
@@ -235,6 +233,13 @@ void readHumidity() {
     }
 }
 
+void initializeProximitySensor() {
+  if (!wasInitialized) {
+    // Initialize VCNL4000 proximity/light sensor
+    proximitySensor.begin();
+    wasInitialized = true;
+  }
+}
 
 /***********************************************************
  * Ambient light function.                                 *
@@ -242,6 +247,7 @@ void readHumidity() {
  * Reads ambient light value and prints it to serial       *
  ***********************************************************/
 void readAmbientLight() {
+  initializeProximitySensor();
   // Get the value...
   uint16_t ambientLight = proximitySensor.readAmbientData();
   // ...and print it on serial
@@ -255,6 +261,7 @@ void readAmbientLight() {
  * Reads proximity and prints it to serial                 *
  ***********************************************************/
 void readProximity() {
+  initializeProximitySensor();
   // Get the value...
   uint16_t proximity = proximitySensor.readProximityData();
   // ...and print it on serial
